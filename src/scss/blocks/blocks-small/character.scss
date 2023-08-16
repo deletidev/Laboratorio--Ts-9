@@ -1,0 +1,135 @@
+@use '../../mixins/pseudo.scss' as *;
+
+.character {
+  &__container {
+    border: 2px solid black;
+    border-left-width: 4px;
+    border-right-width: 3px;
+    position: relative;
+    text-align: left;
+    padding-top: 0.6rem;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    &::after {
+      @include pseudo(102%, 2px);
+      z-index: 2;
+      top: -3px;
+      left: -1.5%;
+      background-color: black;
+      transform: rotateZ(-0.3deg);
+    }
+    &::before {
+      @include pseudo(104%, 2.5px);
+      z-index: 2;
+      bottom: -2px;
+      left: -1.5%;
+      background-color: black;
+    }
+  }
+  &__header {
+    position: relative;
+    width: 94%;
+    height: 44px;
+    z-index: 4;
+    left: -6%;
+    top: 2%;
+    background-color: #f2e1a3;
+    padding: 0.5rem 0.8rem;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &[data-especialidad='disfraces'] {
+      background-color: #e9a3f2;
+    }
+    &[data-especialidad='liderazgo'] {
+      background-color: #8eb1f3;
+    }
+    &[data-especialidad='inteligencia'] {
+      background-color: #ff96bb;
+    }
+    &[data-especialidad='ingeniería improvisada'] {
+      background-color: #f3b58e;
+    }
+    &[data-especialidad='inventor loco'] {
+      background-color: #a3f2d1;
+    }
+    &[data-especialidad='desastre andante'] {
+      background-color: #f0f38e;
+    }
+    &[data-especialidad='agente encubierta'] {
+      background-color: #f2a3a3;
+    }
+    &[data-especialidad='gestión estratégica'] {
+      background-color: #8edbf3;
+    }
+    &[data-especialidad='fuerza bruta'] {
+      background-color: #b6a3f2;
+    }
+    &[data-especialidad='desastre total'] {
+      background-color: #f0f38e;
+    }
+    &[data-especialidad='torpeza extrema'] {
+      background-color: hsl(78, 34%, 70%);
+    }
+    &[data-especialidad='olor fétido'] {
+      background-color: #91c472;
+    }
+  }
+  &__specialty {
+    font-weight: normal;
+    font-size: 14px;
+    text-align: right;
+    line-height: 1;
+    text-align: center;
+    width: 100%;
+  }
+  &__overflow {
+    padding-top: 10px;
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  &__img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    position: relative;
+    z-index: -3;
+  }
+  &__text {
+    flex-grow: 1;
+    padding: 1.2rem;
+    color: black;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: '';
+      top: -5px;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      z-index: -2;
+      background-image: url('../Group8.jpg');
+      border: 1px solid black;
+      transform: rotateZ(1.7deg);
+    }
+  }
+  &__title {
+    font-family: var(--ff-title);
+    font-size: 30px;
+    line-height: 1;
+    word-wrap: break-word;
+    margin-bottom: 12px;
+  }
+  &__habilidad {
+    font-size: 17px;
+    font-weight: bold;
+    color: hsl(0, 94%, 42%);
+    margin-bottom: 5px;
+  }
+}

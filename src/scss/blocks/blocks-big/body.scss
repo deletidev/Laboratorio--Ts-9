@@ -1,0 +1,20 @@
+html {
+  scroll-behavior: smooth;
+}
+body {
+  animation: page 1s ease-in-out;
+  font-family: var(--ff-text);
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes page {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

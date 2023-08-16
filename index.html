@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mortadelo y Filemón: personajes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./fonts/stylesheet.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h1>
+          <picture>
+            <source media="(max-width: 700px)" srcset="./25.svg" />
+            <source srcset="./6.svg" />
+            <img src="./6.svg" alt="Mortadelo y Filemón: personajes" />
+          </picture>
+        </h1>
+      </header>
+      <main class="main">
+        <form class="search-bar" id="search-bar" role="search">
+          <label for="search" class="search-bar__label"
+            >ENCUENTRA A TODOS LOS PERSONAJES:</label
+          >
+          <div class="search-bar__text">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              class="search-bar__input"
+              autocomplete="off"
+            />
+
+            <button type="submit" class="search-bar__btn">Filtrar</button>
+          </div>
+        </form>
+        <div id="characters-list" class="characters-list">Loading...</div>
+      </main>
+      <footer></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'komika_hand';
+  src: url('Komika_Hand-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'komika_hand';
+  src: url('Komika_Hand_Bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
