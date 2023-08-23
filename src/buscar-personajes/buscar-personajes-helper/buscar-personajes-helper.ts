@@ -1,4 +1,4 @@
-import { CharacterClasses } from '../buscar-peronajes.model';
+import { Character, CharacterClasses } from '../buscar-peronajes.model';
 
 const createImg = (url: string, name: string): HTMLImageElement => {
   const img = document.createElement('img');
@@ -7,7 +7,7 @@ const createImg = (url: string, name: string): HTMLImageElement => {
   return img;
 };
 
-export const createDiv = (classes: CharacterClasses): HTMLDivElement => {
+const createDiv = (classes: CharacterClasses): HTMLDivElement => {
   const div = document.createElement('div');
   div.setAttribute('class', `${classes}`);
   return div;
@@ -35,7 +35,7 @@ const createSpanEspecialidad = (
   return spanEspecialidad;
 };
 
-export const createContainerEspecialidad = (especialidad: string) => {
+const createContainerEspecialidad = (especialidad: string) => {
   const characterEspecilidad = createDiv('character__header');
   characterEspecilidad.dataset.especialidad = especialidad.toLowerCase();
   const especialidadParagraph = createEspecialidad();
@@ -76,7 +76,7 @@ const createCharacterTextDiv = (nombre: string, habilidades: string[]) => {
   return createContainerText;
 };
 
-export const characterOverflowCreate = (
+const characterOverflowCreate = (
   nombre: string,
   habilidades: string[],
   imagen: string
@@ -91,4 +91,57 @@ export const characterOverflowCreate = (
   characterOverflow.appendChild(createContainerText);
 
   return characterOverflow;
+};
+
+const characterDraw = (character: Character): HTMLDivElement => {
+  const characterContainer = createDiv('character__container');
+  const { nombre, especialidad, habilidades, imagen } = character;
+
+  const characterEspecilidad = createContainerEspecialidad(especialidad);
+  characterContainer.appendChild(characterEspecilidad);
+
+  const characteOverflowDiv = characterOverflowCreate(
+    nombre,
+    habilidades,
+    imagen
+  );
+  characterContainer.appendChild(characteOverflowDiv);
+
+  return characterContainer;
+};
+
+export const characterPaint = (characters: Character[]) => {
+  const divListCharacters = document.getElementById('characters-list');
+  if (divListCharacters && divListCharacters instanceof HTMLElement) {
+    if (characters.length) {
+      divListCharacters.innerHTML = '';
+      characters.forEach(character => {
+        divListCharacters.appendChild(characterDraw(character));
+      });
+    }
+  }
+};
+
+export const characterFilterPaint = (
+  characters: Character[],
+  inputValue: string
+) => {
+  const divListCharacters = document.getElementById('characters-list');
+  if (divListCharacters && divListCharacters instanceof HTMLElement) {
+    if (characters.length) {
+      divListCharacters.innerHTML = '';
+      characters.forEach(character => {
+        divListCharacters.appendChild(characterDraw(character));
+      });
+    } else {
+      divListCharacters.textContent = `No se ha encontrado ningún personaje que tenga "${inputValue}"`;
+    }
+  }
+};
+
+export const errorPaint = (error: string) => {
+  const divListCharacters = document.getElementById('characters-list');
+  if (divListCharacters && divListCharacters instanceof HTMLElement) {
+    divListCharacters.textContent = `Se ha producido un error: ${error}`;
+  }
 };
